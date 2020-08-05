@@ -23,7 +23,7 @@
              	$error['email']="Email already in use!";
              }else{
              	$getFromU->update('users',$user_id,array('username'=>$username,'email'=>$email));
-             	header('Location:'.BASE_URL.'settings/account');
+             	header('Location:'.BASE_URL.$user->username);
              }
   	}else{
   		$error['fields']="All fields are required";
