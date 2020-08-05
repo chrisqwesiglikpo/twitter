@@ -71,6 +71,7 @@
 	</div><!-- nav ends -->
 	</div><!-- nav container ends -->
 </div><!-- header wrapper end -->
+<script type="text/javascript" src="assets/js/search.js"></script>
 <!--Profile cover-->
 <div class="profile-cover-wrap"> 
 <div class="profile-cover-inner">
