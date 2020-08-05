@@ -4,7 +4,7 @@
   $user=$getFromU->userData($user_id);
 
   if($getFromU->loggedIn()===false){
-  	header('Location:index.php');
+  	header('Location:'.BASE_URL.'index.php');
   }
  
 
@@ -70,6 +70,7 @@
 </div><!-- nav container ends -->
 
 </div><!-- header wrapper end -->
+<script type="text/javascript" src="assets/js/search.js"></script>
 
 <!---Inner wrapper-->
 <div class="inner-wrapper">
