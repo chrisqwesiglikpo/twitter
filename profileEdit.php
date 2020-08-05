@@ -33,12 +33,14 @@
   	if(!empty($_FILES['profileImage']['name'][0])){
   		$fileRoot=$getFromU->uploadImage($_FILES['profileImage']);
   		$getFromU->update('users',$user_id,array('profileImage'=>$fileRoot));
+  		header('Location:'.BASE_URL.$user->username);
   	}
   }
    if(isset($_FILES['profileCover'])){
   	if(!empty($_FILES['profileCover']['name'][0])){
   		$fileRoot=$getFromU->uploadImage($_FILES['profileCover']);
   		$getFromU->update('users',$user_id,array('profileCover'=>$fileRoot));
+  		 header('Location:'.BASE_URL.$user->username);
   	}
   }
 
@@ -183,7 +185,7 @@
 		</ul>
 		<div class="edit-button">
 			<span>
-				<button class="f-btn" type="button" value="Cancel">Cancel</button>
+				<button class="f-btn" type="button" onclick="window.location.href='<?php echo BASE_URL.$user->username; ?>'" value="Cancel">Cancel</button>
 			</span>
 			<span>
 				<input type="submit" id="save" value="Save Changes">
