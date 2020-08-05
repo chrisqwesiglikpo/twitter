@@ -6,6 +6,22 @@
   if($getFromU->loggedIn()===false){
   	header('Location:'.BASE_URL.'index.php');
   }
+
+  if(isset($_POST['tweet'])){
+  	$status=$getFromU->formSanitizer($_POST['status']);
+  	$tweetImage='';
+  	if(!empty($status) or !empty($_FILES['file']['name'][0])){
+         if(!empty($_FILES['file']['name'][0])){
+         	  $tweetImage=$getFromU->uploadImage($_FILES['file']);
+         }
+         if(strlen($status) > 200){
+         	$error="The text of your tweet is too long";
+         }
+         $getFromU->create('tweets',array('status'=>$status,'tweetBy'=>$user_id,'tweetImage'=>$tweetImage,'postedOn'=>date('Y-m-d H:i:s')));
+  	}else{
+  		$error="Type or choose image to tweet";
+  	}
+  }
  
 
 ?>
@@ -71,6 +87,7 @@
 
 </div><!-- header wrapper end -->
 <script type="text/javascript" src="assets/js/search.js"></script>
+<script type="text/javascript" src="assets/js/hashtag.js"></script>
 
 <!---Inner wrapper-->
 <div class="inner-wrapper">
@@ -159,12 +176,17 @@
 						 		<ul>
 						 			<input type="file" name="file" id="file"/>
 						 			<li><label for="file"><i class="fa fa-camera" aria-hidden="true"></i></label>
-						 			<span class="tweet-error"></span>
+						 			<span class="tweet-error">
+						 		    <?php if(isset($error)){
+						 				echo $error;
+						 			}else if(isset($imageError)){
+						 				echo $imageError;
+						 			} ?></span>
 						 			</li>
 						 		</ul>
 						 	</div>
 						 	<div class="t-fo-right">
-						 		<span id="count">140</span>
+						 		<span id="count">200</span>
 						 		<input type="submit" name="tweet" value="tweet"/>
 				 		</form>
 						 	</div>
@@ -176,6 +198,7 @@
 				<!--Tweet SHOW WRAPPER-->
 				 <div class="tweets">
  				  	<!--TWEETS HERE-->
+ 				  	<?php $getFromT->tweets();  ?>
  				 </div>
  				<!--TWEETS SHOW WRAPPER-->
 
