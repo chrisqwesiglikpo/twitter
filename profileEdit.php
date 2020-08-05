@@ -29,6 +29,19 @@
   	 	$error="Name field can not be blank";
   	 }
   }
+  if(isset($_FILES['profileImage'])){
+  	if(!empty($_FILES['profileImage']['name'][0])){
+  		$fileRoot=$getFromU->uploadImage($_FILES['profileImage']);
+  		$getFromU->update('users',$user_id,array('profileImage'=>$fileRoot));
+  	}
+  }
+   if(isset($_FILES['profileCover'])){
+  	if(!empty($_FILES['profileCover']['name'][0])){
+  		$fileRoot=$getFromU->uploadImage($_FILES['profileCover']);
+  		$getFromU->update('users',$user_id,array('profileCover'=>$fileRoot));
+  	}
+  }
+
 ?>
 <!doctype html>
 <html>
@@ -109,7 +122,7 @@
 								<label for="file-up">
 									Upload photo
 								</label>
-								<input type="file" name="profileCover" id="file-up" />
+								<input type="file" name="profileCover" id="file-up" onchange="this.form.submit();" />
 							</li>
 								<li>
 								<label for="cover-upload-btn">
@@ -208,7 +221,7 @@
 								<label for="profileImage">
 									Upload photo
 								</label>
-								<input id="profileImage" type="file"  name="profileImage"/>
+								<input id="profileImage" onchange="this.form.submit();" type="file"  name="profileImage"/>
 								
 							</li>
 							<li><a href="#">Remove</a></li>
@@ -227,11 +240,15 @@
 
 			    <form id="editForm" method="post" enctype="multipart/Form-data">	
 				<div class="profile-name-wrap">
-					<!-- <ul>
+					<?php 
+                       if(isset($imageError)){
+                       	 echo '<ul>
 	 					 <li class="error-li">
-						 	 <div class="span-pe-error"></div>
+						 	 <div class="span-pe-error">'.$imageError.'</div>
 						 </li>
-					 </ul>  -->
+					     </ul>';
+                       }
+                     ?>
 					<div class="profile-name">
 						<input type="text" name="screenName" value="<?php echo $user->screenName; ?>"/>
 					</div>
@@ -261,6 +278,14 @@
 									<input type="text" name="website" placeholder="Website" value="<?php echo $user->website; ?>"/>
 								</div>
 							</li>
+							<?php 
+		                       if(isset($error)){
+		                       	 echo '<li class="error-li">
+								 	 <div class="span-pe-error">'.$error.'</div>
+								      </li>
+							         ';
+		                       }
+                     ?>
 				</form>
 				<script type="text/javascript">
 					$('#save').click(function(){

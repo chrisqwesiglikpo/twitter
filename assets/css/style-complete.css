@@ -253,7 +253,8 @@ input[type="checkbox"]#drop-wrap1:checked ~ .drop-wrap{
 	color:white;
 }
 .nav .nav-right ul li img{
-	width: 40px;
+	 width: 32px;
+    border-radius: 9px;
 	margin-top: 5px;
 }
 .nav ul ul li {

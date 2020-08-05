@@ -125,6 +125,29 @@ class User {
 		$user=$stmt->fetch(PDO::FETCH_OBJ);
 		return $user->user_id;
 	}
+	public function uploadImage($file){
+		$filename=basename($file['name']);
+		$fileTmp=$file['tmp_name'];
+		$fileSize=$file['size'];
+		$error=$file['error'];
+
+		$ext=explode('.',$filename);
+		$ext=strtolower(end($ext));
+		$allowed_ext=array('jpg','png','jpeg');
+		if(in_array($ext,$allowed_ext)===true){
+            if($error===0){
+            	if($fileSize <= 209272152){
+                   $fileRoot ='users/'.$filename;
+                   move_uploaded_file($fileTmp,$fileRoot);
+                   return $fileRoot;
+            	}else{
+            		$GLOBALS['imageError']="The size is too large";
+            	}
+            }
+		}else{
+			$GLOBALS['imageError']="The extension is not allowed";
+		}
+	}
 }
 
 ?>
