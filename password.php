@@ -19,7 +19,7 @@
            	  }else if($newPassword != $rePassword) {
            	  	$error['rePassword']="Password does not match";
            	  }else{
-           	  	$getFromU->update('users',$user_id,array('password'=>md5($currentPwd)));
+           	  	$getFromU->update('users',$user_id,array('password'=>md5($newPassword)));
            	  	header('Location:'.BASE_URL.$user->username);
            	  }
            }else{
