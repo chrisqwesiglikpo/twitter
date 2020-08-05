@@ -21,7 +21,9 @@ li.error-li{
 .wrapper{
 	width:100%;
 }
-
+a{
+	text-decoration:none;
+}
 
 /*---------------------------Main HEADER WRAPPER START-------------------------------*/
 .header-wrapper{
