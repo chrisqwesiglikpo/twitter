@@ -2,7 +2,10 @@
   include 'core/init.php';
   $user_id=$_SESSION['user_id']; 
   $user=$getFromU->userData($user_id);
- 
+
+  if($getFromU->loggedIn()===false){
+  	header('Location:index.php');
+  }
  
 
 ?>
@@ -15,9 +18,9 @@
 	<head>
 		<title>Tweety</title>
 		  <meta charset="UTF-8" />
-		  <link rel="stylesheet" href="assets/css/font/css/font-awesome.css"/>
-		  <link rel="stylesheet" href="assets/css/style-complete.css"/>
-   		  <script src="assets/js/jquery.js"></script> 	  
+		  <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/font/css/font-awesome.css"/>
+		  <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/style-complete.css"/>
+   		  <script src="<?php echo BASE_URL; ?>assets/js/jquery.js"></script> 	  
 	</head>
 	<!--Helvetica Neue-->
 <body>
@@ -31,8 +34,8 @@
 		
 		<div class="nav-left">
 			<ul>
-				<li><a href="#"><i class="fa fa-home" aria-hidden="true"></i>Home</a></li>
-				<li><a href="i/notifications"><i class="fa fa-bell" aria-hidden="true"></i>Notification</a></li>
+				<li><a href="<?php echo BASE_URL; ?>home.php"><i class="fa fa-home" aria-hidden="true"></i>Home</a></li>
+				<li><a href="<?php echo BASE_URL; ?>i/notifications"><i class="fa fa-bell" aria-hidden="true"></i>Notification</a></li>
 				<li><i class="fa fa-envelope" aria-hidden="true"></i>Messages</li>
 			</ul>
 		</div><!-- nav left ends-->
@@ -46,14 +49,14 @@
 					</div>
 				</li>
 
-				<li class="hover"><label class="drop-label" for="drop-wrap1"><img src="<?php echo $user->profileImage;  ?>"/></label>
+				<li class="hover"><label class="drop-label" for="drop-wrap1"><img src="<?php echo BASE_URL.$user->profileImage;  ?>"/></label>
 				<input type="checkbox" id="drop-wrap1">
 				<div class="drop-wrap">
 					<div class="drop-inner">
 						<ul>
-							<li><a href="<?php echo $user->username;  ?>"><?php echo $user->username;  ?></a></li>
-							<li><a href="settings/account">Settings</a></li>
-							<li><a href="includes/logout.php">Log out</a></li>
+							<li><a href="<?php echo BASE_URL.$user->username;  ?>"><?php echo $user->username;  ?></a></li>
+							<li><a href="<?php echo BASE_URL; ?>settings/account">Settings</a></li>
+							<li><a href="<?php echo BASE_URL; ?>includes/logout.php">Log out</a></li>
 						</ul>
 					</div>
 				</div>
@@ -78,19 +81,19 @@
 			<div class="info-inner">
 				<div class="info-in-head">
 					<!-- PROFILE-COVER-IMAGE -->
-					<img src="<?php echo $user->profileCover;  ?>"/>
+					<img src="<?php echo BASE_URL.$user->profileCover;  ?>"/>
 				</div><!-- info in head end -->
 				<div class="info-in-body">
 					<div class="in-b-box">
 						<div class="in-b-img">
 						<!-- PROFILE-IMAGE -->
-							<img src="<?php echo $user->profileImage;  ?>"/>
+							<img src="<?php echo BASE_URL.$user->profileImage;  ?>"/>
 						</div>
 					</div><!--  in b box end-->
 					<div class="info-body-name">
 						<div class="in-b-name">
-							<div><a href="<?php echo $user->username;  ?>"><?php echo $user->screenName;  ?></a></div>
-							<span><small><a href="<?php echo $user->username;  ?>">@<?php echo $user->username;  ?></a></small></span>
+							<div><a href="<?php echo BASE_URL.$user->username;  ?>"><?php echo $user->screenName;  ?></a></div>
+							<span><small><a href="<?php echo BASE_URL.$user->username;  ?>">@<?php echo $user->username;  ?></a></small></span>
 						</div><!-- in b name end-->
 					</div><!-- info body name end-->
 				</div><!-- info in body end-->
@@ -139,7 +142,7 @@
 						 <div class="tweet-h-left">
 						 	<div class="tweet-h-img">
 						 	<!-- PROFILE-IMAGE -->
-						 		<img src="<?php echo $user->profileImage;  ?>"/>
+						 		<img src="<?php echo BASE_URL.$user->profileImage;  ?>"/>
 						 	</div>
 						 </div>
 						 <div class="tweet-body">
@@ -176,7 +179,7 @@
  				<!--TWEETS SHOW WRAPPER-->
 
 		    	<div class="loading-div">
-		    		<img id="loader" src="assets/images/loading.svg" style="display: none;"/> 
+		    		<img id="loader" src="<?php echo BASE_URL;  ?>assets/images/loading.svg" style="display: none;"/> 
 		    	</div>
 				<div class="popupTweet"></div>
 				<!--Tweet END WRAPER-->
