@@ -31,7 +31,7 @@ $(function(){
       }else{
           $('.hash-box li').hide();
       }
-      $('#count').text(max -content.length);
+      $('#count').text(max - content.length);
       if(content.length===max){
           $('#count').css('color','#f00');
       }else{
