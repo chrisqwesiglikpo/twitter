@@ -85,12 +85,13 @@
                                    echo '<li><button><a href="#"><i class="fa fa-share" aria-hidden="true"></i></a></button></li>	
 									<li>'.(($tweet->tweetID== !empty($retweet['retweetID'])) ? '<button class="retweeted" data-tweet="'.$tweet->tweetID.'" data-user="'.$tweet->tweetBy.'"><a href="#"><i class="fa fa-retweet" aria-hidden="true"></i><span class="retweetsCount">'.$tweet->retweetCount.'</span></a></button>' : '<button class="retweet" data-tweet="'.$tweet->tweetID.'" data-user="'.$tweet->tweetBy.'"><a href="#"><i class="fa fa-retweet" aria-hidden="true"></i><span class="retweetsCount">'.(($tweet->retweetCount > 0) ? $tweet->retweetCount : '').'</span></a></button>' ).'</li>
 									<li>'.((!empty($likes['likeOn'])== $tweet->tweetID) ? '<button class="unlike-btn" data-tweet="'.$tweet->tweetID.'" data-user="'.$tweet->tweetBy.'"><a href="#"><i class="fa fa-heart" aria-hidden="true"></i><span class="likesCounter">'.$tweet->likesCount.'</span></a></button>':'<button class="like-btn" data-tweet="'.$tweet->tweetID.'" data-user="'.$tweet->tweetBy.'"><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i><span class="likesCounter">'.((($tweet->likesCount > 0)) ? $tweet->likesCount : '').'</span></a></button>').'</li>
+									   '.(($tweet->tweetBy===$user_id) ? '
 										<li>
 										<a href="#" class="more"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
 										<ul> 
-										  <li><label class="deleteTweet">Delete Tweet</label></li>
+										  <li><label class="deleteTweet" data-tweet="'.$tweet->tweetID.'">Delete Tweet</label></li>
 										</ul>
-									</li>';
+									</li>' : '' );
 							 }else{
 							?>
 							<li><button type="buttton"><i class="fa fa-share" aria-hidden="true"></i></button></li>
