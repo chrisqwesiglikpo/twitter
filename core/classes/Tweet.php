@@ -26,6 +26,7 @@ class Tweet extends User {
 						</div>' :
 						'' ).'
 						'.((!empty($tweet->retweetMsg) && $tweet->tweetID ===$retweet['tweetID'] OR $tweet->retweetID > 0) ? '
+							<div class="t-show-popup" data-tweet="'.$tweet->tweetID.'">
 							<div class="t-show-head">
 									<div class="t-show-img">
 										<img src="'.BASE_URL.$user->profileImage.'"/>
@@ -46,7 +47,7 @@ class Tweet extends User {
 										<div class="retweet-t-s-b-inner">
 										'.((!empty($tweet->tweetImage)) ? '
 											<div class="retweet-t-s-b-inner-left">
-												<img src="'.BASE_URL.$tweet->tweetImage.'"/>	
+												<img src="'.BASE_URL.$tweet->tweetImage.'" class="imagePopup" data-tweet="'.$tweet->tweetID.'"/>	
 											</div>' : '').'
 											<div class="retweet-t-s-b-inner-right">
 												<div class="t-h-c-name">
@@ -61,7 +62,7 @@ class Tweet extends User {
 										</div>
 									</div>
 								</div>
-
+								</div>
 								' : '
 						<div class="t-show-popup" data-tweet="'.$tweet->tweetID.'">
 							<div class="t-show-head">
@@ -84,7 +85,7 @@ class Tweet extends User {
 									<div class="t-show-body">
 									  <div class="t-s-b-inner">
 									   <div class="t-s-b-inner-in">
-									     <img src="'.$tweet->tweetImage.'" class="imagePopup"/>
+									     <img src="'.$tweet->tweetImage.'" class="imagePopup" data-tweet="'.$tweet->tweetID.'"/>
 									   </div>
 									  </div>
 									</div>

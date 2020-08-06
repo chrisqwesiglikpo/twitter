@@ -9,4 +9,17 @@ $(function(){
             });
   		});
   });
+
+  $(document).on('click','.imagePopup',function(e){
+     e.stopPropagation();
+     var tweet_id=$(this).data('tweet');
+     $.post('http://localhost/twitter/core/ajax/imagePopup.php',
+      {showImage:tweet_id},function(data){
+        $('.popupTweet').html(data);
+        $('.close-imagePopup').click(function(){
+          $('.img-popup').hide();
+        })
+      });
+  });
+
 });
