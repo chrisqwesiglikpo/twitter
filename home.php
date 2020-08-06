@@ -128,7 +128,7 @@
 								TWEETS
 							</div>
 							<div class="num-body">
-								10
+								<?php $getFromT->countTweets($user_id); ?>
 							</div>
 						</div>
 						<div class="num-box">
@@ -218,6 +218,7 @@
 				<script type="text/javascript" src="assets/js/popuptweets.js"></script>
 				<script type="text/javascript" src="assets/js/delete.js"></script>
 				<script type="text/javascript" src="assets/js/comment.js"></script>
+				<script type="text/javascript" src="assets/js/popupForm.js"></script>
  			
 			</div><!-- in left wrap-->
 		</div><!-- in center end -->
