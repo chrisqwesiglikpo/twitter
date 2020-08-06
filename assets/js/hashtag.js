@@ -25,6 +25,7 @@ $(function(){
                    $('.hash-box li').hide();
                    $('.status').focus();
                    $('#count').text(max -content.length);
+                   $('#sp').text(max -content.length);
               });
             }
       	 });

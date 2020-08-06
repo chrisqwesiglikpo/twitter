@@ -173,6 +173,13 @@ class Tweet extends User {
     	 return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    public function comments($tweet_id){
+    	$stmt=$this->pdo->prepare("SELECT * FROM `comments` LEFT JOIN `users` ON `commentBy`=`user_id` WHERE `commentOn` =:tweet_id");
+    	$stmt->bindParam(":tweet_id",$tweet_id,PDO::PARAM_INT);
+    	$stmt->execute();
+    	return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
+
 	public function addLike($user_id,$tweet_id,$get_id){
 		$stmt=$this->pdo->prepare("UPDATE `tweets` SET `likesCount` =`likesCount` +1 WHERE `tweetID`=:tweet_id");
 		$stmt->bindParam(":tweet_id",$tweet_id,PDO::PARAM_INT);
