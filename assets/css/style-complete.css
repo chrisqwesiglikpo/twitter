@@ -822,12 +822,14 @@ box-shadow: inset 0px -4px 0px #6cc854;}
 	font-weight: bold;
 }
 
- 
+ button.retweeted{
+ 	color:skyblue;
+ }
 
 .t-s-f-right ul li button.unlike-btn,.t-s-f-right ul li button.unlike-btn i,.t-s-f-right ul li button.unlike-btn span, .tweet-show-popup-footer-menu ul li button.unlike-btn{
 	color: red;
 }
-.t-s-f-right ul li button.retweet > .fa-share , .t-s-f-right ul li button.retweeted> .fa-retweet, .tweet-show-popup-footer-menu ul li button.retweeted, .img-popup-tweet-menu-inner > ul > li > button.retweeted{
+.t-s-f-right ul li button.retweet > .fa-share , .t-s-f-right ul li button.retweeted > .fa-retweet, .tweet-show-popup-footer-menu ul li button.retweeted, .img-popup-tweet-menu-inner > ul > li > button.retweeted{
 	color:skyblue;
 }
 .t-s-f-right ul li a:hover> .fa-heart-o{

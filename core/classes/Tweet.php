@@ -7,7 +7,8 @@ class Tweet extends User {
 	}
 
 	public function tweets($user_id){
-		$stmt=$this->pdo->prepare("SELECT * FROM `tweets`,`users` WHERE `tweetBy`=`user_id`");
+		$stmt=$this->pdo->prepare("SELECT * FROM `tweets` LEFT JOIN `users` ON `tweetBy` =`user_id` WHERE `tweetBy`=:user_id AND `retweetID`= '0' OR `tweetBy`=`user_id` AND `retweetBy` !=:user_id");
+		$stmt->bindParam(":user_id",$user_id,PDO::PARAM_INT);
 		$stmt->execute();
 		$tweets=$stmt->fetchAll(PDO::FETCH_OBJ);
 		foreach ($tweets as $tweet) {
@@ -62,7 +63,7 @@ class Tweet extends User {
 								</div>
 
 								' : '
-						<div class="t-show-popup">
+						<div class="t-show-popup" data-tweet="'.$tweet->tweetID.'">
 							<div class="t-show-head">
 								<div class="t-show-img">
 									<img src="'.$tweet->profileImage.'"/>
