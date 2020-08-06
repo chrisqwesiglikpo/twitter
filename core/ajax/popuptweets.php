@@ -163,7 +163,7 @@
 												<li>
 												<a href="#" class="more"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
 												<ul> 
-												  <li><label class="deleteTweet">Delete Tweet</label></li>
+												  <li><label class="deleteComment" data-tweet="'.$tweet->tweetID.'" data-comment="'.$comment->commentID.'">Delete Comment</label></li>
 												</ul>
 												</li>
 											</ul>
