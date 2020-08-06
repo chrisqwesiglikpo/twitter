@@ -192,7 +192,7 @@ class User {
 		}else if($hours <=24){
 			return $hours.'h';
 		}else if($months <= 12){
-			return data('M j',$time);
+			return date('M j',$time);
 		}
 		else{
 			return date('j M Y',$time);
