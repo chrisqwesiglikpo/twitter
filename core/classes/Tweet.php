@@ -35,7 +35,7 @@ class Tweet extends User {
 										<div class="t-h-c-name">
 											<span><a href="'.BASE_URL.$user->username.'">'.$user->screenName.'</a></span>
 											<span>@'.$user->username.'</span>
-											<span>'.$retweet['postedOn'].'</span>
+											<span>'.$this->timeAgo($retweet['postedOn']).'</span>
 										</div>
 										<div class="t-h-c-dis">
 											'.$this->getTweetLinks($tweet->retweetMsg).'
@@ -53,7 +53,7 @@ class Tweet extends User {
 												<div class="t-h-c-name">
 													<span><a href="'.BASE_URL.$tweet->username.'">'.$tweet->screenName.'</a></span>
 													<span>@'.$tweet->screenName.'</span>
-													<span>'.$tweet->postedOn.'</span>
+													<span>'.$this->timeAgo($tweet->postedOn).'</span>
 												</div>
 												<div class="retweet-t-s-b-inner-right-text">		
 													'.$tweet->status.'
@@ -73,7 +73,7 @@ class Tweet extends User {
 									<div class="t-h-c-name">
 										<span><a href="'.BASE_URL.$tweet->username.'">'.$tweet->screenName.'</a></span>
 										<span>@'.$tweet->username.'</span>
-										<span>'.$tweet->postedOn.'</span>
+										<span>'.$this->timeAgo($tweet->postedOn).'</span>
 									</div>
 									<div class="t-h-c-dis">
 										'.$this->getTweetLinks($tweet->status).'
