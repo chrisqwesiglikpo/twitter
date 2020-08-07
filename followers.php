@@ -240,7 +240,7 @@
     <!--FOLLOWING OR FOLLOWER FULL WRAPPER-->
     <div class="wrapper-following">
       <div class="wrap-follow-inner">
-               followersList 
+               <?php   $getFromF->followersList($profileId,$user_id);  ?>
       </div>
     <!-- wrap follo inner end-->
     </div>

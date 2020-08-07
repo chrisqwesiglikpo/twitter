@@ -97,6 +97,42 @@ class Follow extends User {
 				</div>';
 		}
 	}
+	public function followersList($profileID,$user_id){
+		$stmt=$this->pdo->prepare("SELECT * FROM `users` LEFT JOIN `follow` ON `sender` = `user_id` AND CASE WHEN `receiver` =:user_id THEN `sender` = `user_id` END WHERE `receiver` IS NOT NULL");
+		$stmt->bindParam(":user_id",$profileID,PDO::PARAM_INT);
+		$stmt->execute();
+		$followings=$stmt->fetchAll(PDO::FETCH_OBJ);
+		foreach ($followings as $following) {
+			echo '<div class="follow-unfollow-box">
+					<div class="follow-unfollow-inner">
+						<div class="follow-background">
+							<img src="'.BASE_URL.$following->profileCover.'"/>
+						</div>
+						<div class="follow-person-button-img">
+							<div class="follow-person-img"> 
+							 	<img src="'.BASE_URL.$following->profileImage.'"/>
+							</div>
+							<div class="follow-person-button">
+								 <!-- FOLLOW BUTTON -->
+								 '.$this->followBtn($following->user_id,$user_id,$profileID).'
+						    </div>
+						</div>
+						<div class="follow-person-bio">
+							<div class="follow-person-name">
+								<a href="'.BASE_URL.$following->username.'">'.$following->screenName.'</a>
+							</div>
+							<div class="follow-person-tname">
+								<a href="'.BASE_URL.$following->username.'">'.$following->username.'</a>
+							</div>
+							<div class="follow-person-dis">
+								<!-- BIO -->
+								'.Tweet::getTweetLinks($following->bio).'
+							</div>
+						</div>
+					</div>
+				</div>';
+		}
+	}
 }
 
 ?>

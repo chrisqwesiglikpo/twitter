@@ -242,7 +242,7 @@
     <!--FOLLOWING OR FOLLOWER FULL WRAPPER-->
     <div class="wrapper-following">
       <div class="wrap-follow-inner">
-             <?php  /*$profileData->user_id;//$user_id;//*/ echo $getFromF->followingList($profileId,$user_id);  ?>
+             <?php   $getFromF->followingList($profileId,$user_id);  ?>
       </div><!-- wrap follo inner end-->
     </div><!--FOLLOWING OR FOLLOWER FULL WRAPPER END-->
 
