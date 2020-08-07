@@ -13,7 +13,20 @@ class User {
 		return $data;
 
 	}
-    
+    public function delete($table,$array){
+    	$sql="DELETE FROM `{$table}`";
+    	$where=" WHERE ";
+    	foreach ($array as $name => $value) {
+    		$sql .="{$where} `{$name}` = :{$name}";
+    		$where = " AND ";
+    	}
+    	if($stmt=$this->pdo->prepare($sql)){
+    		foreach ($array as $name => $value) {
+    		$stmt->bindValue(':'.$name,$value);
+    		}
+    		$stmt->execute();
+    	}
+    }
     public function search($search){
        $stmt=$this->pdo->prepare("SELECT `user_id`,`username`,`screenName`,`profileImage`,`profileCover` FROM `users` WHERE `username` LIKE ? OR `screenName` LIKE ? ");
        $stmt->bindValue(1,$search.'%',PDO::PARAM_STR);
