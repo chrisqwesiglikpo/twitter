@@ -245,6 +245,7 @@
              <?php   $getFromF->followingList($profileId,$user_id);  ?>
       </div><!-- wrap follo inner end-->
     </div><!--FOLLOWING OR FOLLOWER FULL WRAPPER END-->
+    <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/follow.js"></script>
 
   </div><!--in full wrap end-->
 </div>

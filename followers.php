@@ -244,6 +244,7 @@
       </div>
     <!-- wrap follo inner end-->
     </div>
+    <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/follow.js"></script>
     <!--FOLLOWING OR FOLLOWER FULL WRAPPER END--> 
   </div><!--in full wrap end-->
 </div>
