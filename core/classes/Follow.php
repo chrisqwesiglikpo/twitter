@@ -36,7 +36,7 @@ class Follow extends User {
 	}
 	
 	public function follow($followID,$user_id){
-       $this->create('follow', array('sender'=> $user_id ,'receiver' => $followID, 'followOn' => date("Y:M:D H:i:s")));
+       $this->create('follow', array('sender'=> $user_id ,'receiver' => $followID));
        $this->addFollowCount($followID,$user_id);
        $stmt=$this->pdo->prepare('SELECT * FROM `users` WHERE `user_id` =:followID');
        $stmt->execute(array("followID"=>$followID));
