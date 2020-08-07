@@ -124,7 +124,7 @@
 	</ul>
 	<div class="edit-button">
 		<span>
-			<button class="f-btn follow-btn"  data-follow="user_id" data-user="user_id"><i class="fa fa-user-plus"></i> Follow </button>
+			<?php $getFromF->followBtn($profileId,$user_id); ?>
 		</span>
 	</div>
     </div>
