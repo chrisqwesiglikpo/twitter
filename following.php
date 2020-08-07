@@ -231,6 +231,7 @@
 
 
     <!--- trends-----> 
+     <?php $getFromT->trends();  ?>
 </div>
 
    </div>

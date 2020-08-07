@@ -456,9 +456,10 @@
 		<!--==WHO TO FOLLOW==-->
            <!-- HERE -->
 		<!--==WHO TO FOLLOW==-->
+		<?php $getFromF->WhoToFollow($user_id,$user_id);  ?>
 			
 		<!--==TRENDS==-->
- 	 	   <!-- HERE -->
+ 	 	    <?php $getFromT->trends();  ?>
 	 	<!--==TRENDS==-->
 	</div>
 	<!-- in left wrap-->
