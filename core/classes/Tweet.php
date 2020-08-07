@@ -26,7 +26,7 @@ class Tweet extends User {
 							</div>
 						</div>' :
 						'' ).'
-						'.((!empty($tweet->retweetMsg) && $tweet->tweetID ===$retweet['tweetID'] OR $tweet->retweetID > 0) ? '
+						'.((!empty($tweet->retweetMsg) && $tweet->tweetID ===!empty($retweet['tweetID']) OR $tweet->retweetID > 0) ? '
 							<div class="t-show-popup" data-tweet="'.$tweet->tweetID.'">
 							<div class="t-show-head">
 									<div class="t-show-img">
@@ -36,7 +36,7 @@ class Tweet extends User {
 										<div class="t-h-c-name">
 											<span><a href="'.BASE_URL.$user->username.'">'.$user->screenName.'</a></span>
 											<span>@'.$user->username.'</span>
-											<span>'.$this->timeAgo($retweet['postedOn']).'</span>
+											<span>'.$this->timeAgo(!empty($retweet['postedOn'])).'</span>
 										</div>
 										<div class="t-h-c-dis">
 											'.$this->getTweetLinks($tweet->retweetMsg).'
