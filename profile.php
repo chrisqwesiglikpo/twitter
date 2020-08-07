@@ -367,6 +367,7 @@
 		<!--==WHO TO FOLLOW==-->
 	      <!--who to follow-->
 		<!--==WHO TO FOLLOW==-->
+		<?php $getFromF->WhoToFollow($user_id,$user_id);  ?>
 			
 		<!--==TRENDS==-->
 	 	   <!--Trends-->

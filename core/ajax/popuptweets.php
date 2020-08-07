@@ -125,6 +125,7 @@
 				 	</div>
 				 	<div class="t-fo-right">
 		 		 		<input type="submit" id="postComment">
+		 		 		<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/follow.js"></script>
 		 		 	
 		 		 		
 				 	</div>

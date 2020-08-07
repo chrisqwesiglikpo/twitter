@@ -81,13 +81,21 @@
 			</ul>
 		</div>
 		<!-- nav right ends-->
+		 
  
 	</div>
 	<!-- nav ends -->
+		<!--Tweet END WRAPER-->
+				<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/popupForm.js"></script>
+				<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/search.js"></script>
+				<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/hashtag.js"></script>
+ 			
+	
 
 </div><!-- nav container ends -->
 </div><!-- header wrapper end -->
-<script type="text/javascript" src="assets/js/search.js"></script>
+             
+
 		
 	<div class="container-wrap">
 
