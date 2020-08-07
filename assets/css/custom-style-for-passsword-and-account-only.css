@@ -1,0 +1,9 @@
+ul.search-result .nav-right-down-wrap{
+			width: 260px;
+		    border: 1px solid #ccc;
+		    overflow: hidden;
+		    position: absolute;
+		    background: #fff;
+		    top: 51px;
+		    right: 206px;
+}

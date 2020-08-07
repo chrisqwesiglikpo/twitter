@@ -17,6 +17,9 @@ input[type="submit"]:active{
 li.error-li{
 	list-style:none;
 }
+button.f-btn.follow-btn {
+    margin-top: 6px;
+}
 /*-------------------------INDEX PAGE CSS STARTS---------------------------------*/
 .wrapper{
 	width:100%;

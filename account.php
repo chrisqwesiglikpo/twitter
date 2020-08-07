@@ -37,9 +37,11 @@
 		<meta charset="UTF-8" />
 		<link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/font/css/font-awesome.css"/>
 		<link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/style-complete.css"/>
+		<link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/custom-style-for-passsword-and-account-only.css"/>
    		<script src="<?php echo BASE_URL; ?>assets/js/jquery.js"></script> 	 
 	</head>
 	<!--Helvetica Neue-->
+	
 <body>
 <div class="wrapper">
 <!-- header wrapper -->
@@ -59,11 +61,9 @@
 		<div class="nav-right">
 			<ul>
 				<li><input type="text" placeholder="Search" class="search"/><i class="fa fa-search" aria-hidden="true"></i></li>
-				<div class="nav-right-down-wrap">
 					<ul class="search-result">
 					
 					</ul>
-				</div>
  				<li class="hover"><label class="drop-label" for="drop-wrap1"><img src="<?php echo BASE_URL.$user->profileImage; ?>"/></label>
 				<input type="checkbox" id="drop-wrap1">
 				<div class="drop-wrap">
@@ -76,25 +76,25 @@
 					</div>
 				</div>
 				</li>
-				<li><label for="pop-up-tweet">Tweet</label></li>
+				<li><label for="pop-up-tweet" class="addTweetBtn">Tweet</label></li>
 
 			</ul>
 		</div>
 		<!-- nav right ends-->
-		 
  
 	</div>
+
 	<!-- nav ends -->
 		<!--Tweet END WRAPER-->
-				<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/popupForm.js"></script>
-				<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/search.js"></script>
-				<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/hashtag.js"></script>
- 			
+        <script type="text/javascript" src="<?php echo BASE_URL;?>assets/js/popupForm.js"></script>
+		<script type="text/javascript" src="<?php echo BASE_URL;?>assets/js/search.js"></script>
+		<script type="text/javascript" src="<?php echo BASE_URL;?>assets/js/hashtag.js"></script>	
 	
+		
 
 </div><!-- nav container ends -->
 </div><!-- header wrapper end -->
-             
+ 
 
 		
 	<div class="container-wrap">
@@ -215,6 +215,8 @@
 	<!--CONTAINER_WRAP ENDS-->
 
 	</div><!-- ends wrapper -->
+
+	  
 </body>
 
 </html>
