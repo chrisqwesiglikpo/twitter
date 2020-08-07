@@ -23,11 +23,11 @@ class Follow extends User {
                 	echo "<button class='f-btn following-btn follow-btn' data-follow='".$profileID."'>Following</button>";
                 }else{
                     //follow button
-                    echo "<button class='f-btn following-btn follow-btn' data-follow='".$profileID."'><i class='fa fa-user-plus'></i>Follow</button>";
+                    echo "<button class='f-btn  follow-btn' data-follow='".$profileID."'><i class='fa fa-user-plus'></i>Follow</button>";
                 }
 			}else{
 				//edit button
-				echo "<button class='f-btn' onclick=location.href='profileEdit.php'>Profile Edit</button>";
+				echo "<button class='f-btn' onclick=location.href='profileEdit.php'>Edit Profile</button>";
 			}
 
 		}else{
