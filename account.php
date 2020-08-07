@@ -88,7 +88,9 @@
 		<!--Tweet END WRAPER-->
         <script type="text/javascript" src="<?php echo BASE_URL;?>assets/js/popupForm.js"></script>
 		<script type="text/javascript" src="<?php echo BASE_URL;?>assets/js/search.js"></script>
-		<script type="text/javascript" src="<?php echo BASE_URL;?>assets/js/hashtag.js"></script>	
+		<script type="text/javascript" src="<?php echo BASE_URL;?>assets/js/hashtag.js"></script>
+		<script type="text/javascript" src="<?php echo BASE_URL;?>assets/js/delete.js"></script>
+		<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/messages.js"></script>
 	
 		
 
