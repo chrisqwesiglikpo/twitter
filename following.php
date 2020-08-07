@@ -1,4 +1,5 @@
-<?php 
+<?php
+
   if(isset($_GET['username'])===true && empty($_GET['username'])===false){
   	 include 'core/init.php';
   	 $username=$getFromU->formSanitizer($_GET['username']);
@@ -71,7 +72,7 @@
   </div><!-- nav ends -->
   </div><!-- nav container ends -->
 </div><!-- header wrapper end -->
-<script type="text/javascript" src="assets/js/search.js"></script>
+
 <!--Profile cover-->
 <div class="profile-cover-wrap"> 
 <div class="profile-cover-inner">
@@ -124,7 +125,7 @@
   </ul>
   <div class="edit-button">
     <span>
-      <?php $getFromF->followBtn($profileId,$user_id); ?>
+      <?php echo $getFromF->followBtn($profileId,$user_id); ?>
     </span>
   </div>
     </div>
@@ -220,9 +221,11 @@
        <!-- <li><img src="#"/></li> -->
     </ul>   
   </div>
-  <!---- whoToFollow---->
+  <!-- WhoToFollow-->
 
-  <!--- trends--->
+
+
+    <!--- trends-----> 
 </div>
 
    </div>
@@ -239,7 +242,7 @@
     <!--FOLLOWING OR FOLLOWER FULL WRAPPER-->
     <div class="wrapper-following">
       <div class="wrap-follow-inner">
-              Following list
+             <?php  /*$profileData->user_id;//$user_id;//*/ echo $getFromF->followingList($profileId,$user_id);  ?>
       </div><!-- wrap follo inner end-->
     </div><!--FOLLOWING OR FOLLOWER FULL WRAPPER END-->
 

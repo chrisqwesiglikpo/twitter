@@ -71,7 +71,7 @@
 	</div><!-- nav ends -->
 	</div><!-- nav container ends -->
 </div><!-- header wrapper end -->
-<script type="text/javascript" src="assets/js/search.js"></script>
+
 <!--Profile cover-->
 <div class="profile-cover-wrap"> 
 <div class="profile-cover-inner">
@@ -124,7 +124,7 @@
 	</ul>
 	<div class="edit-button">
 		<span>
-			<?php $getFromF->followBtn($profileId,$user_id); ?>
+			<?php echo $getFromF->followBtn($profileId,$user_id); ?>
 		</span>
 	</div>
     </div>
