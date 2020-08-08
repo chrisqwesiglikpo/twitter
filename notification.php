@@ -3,32 +3,17 @@
   $user_id=$_SESSION['user_id']; 
   $user=$getFromU->userData($user_id);
   $notify=$getFromM->getNotificationCount($user_id);
+  
 
   if($getFromU->loggedIn()===false){
-  	header('Location:'.BASE_URL.'index.php');
+  	header('Location:index.php');
   }
 
+  $notification=$getFromM->notification($user_id);
 
 
-  if(isset($_POST['tweet'])){
-  	$status=$getFromU->formSanitizer($_POST['status']);
-  	$tweetImage='';
-  	if(!empty($status) or !empty($_FILES['file']['name'][0])){
-         if(!empty($_FILES['file']['name'][0])){
-         	  $tweetImage=$getFromU->uploadImage($_FILES['file']);
-         }
-         if(strlen($status) > 200){
-         	$error="The text of your tweet is too long";
-         }
-         $getFromU->create('tweets',array('status'=>$status,'tweetBy'=>$user_id,'tweetImage'=>$tweetImage,'postedOn'=>date('Y-m-d H:i:s')));
-         preg_match_all("/#+([a-zA-Z0-9_]+)/i",$status,$hashtag);
-         if(!empty($hashtag)){
-         	$getFromT->addTrend($status);
-         }
-  	}else{
-  		$error="Type or choose image to tweet";
-  	}
-  }
+
+  
  
 
 ?>
@@ -93,8 +78,8 @@
 </div><!-- nav container ends -->
 
 </div><!-- header wrapper end -->
-<script type="text/javascript" src="assets/js/search.js"></script>
-<script type="text/javascript" src="assets/js/hashtag.js"></script>
+<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/search.js"></script>
+<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/hashtag.js"></script>
 
 <!---Inner wrapper-->
 <div class="inner-wrapper">
@@ -162,53 +147,140 @@
 		</div><!-- in left end-->
 		<div class="in-center">
 			<div class="in-center-wrap">
-				<!--TWEET WRAPPER-->
-				<div class="tweet-wrap">
-					<div class="tweet-inner">
-						 <div class="tweet-h-left">
-						 	<div class="tweet-h-img">
-						 	<!-- PROFILE-IMAGE -->
-						 		<img src="<?php echo BASE_URL.$user->profileImage;  ?>"/>
-						 	</div>
-						 </div>
-						 <div class="tweet-body">
-						 <form method="post" enctype="multipart/form-data">
-							<textarea class="status" name="status" placeholder="Type Something here!" rows="4" cols="50"></textarea>
- 						 	<div class="hash-box">
-						 		<ul>
-  						 		</ul>
-						 	</div>
- 						 </div>
-						 <div class="tweet-footer">
-						 	<div class="t-fo-left">
-						 		<ul>
-						 			<input type="file" name="file" id="file"/>
-						 			<li><label for="file"><i class="fa fa-camera" aria-hidden="true"></i></label>
-						 			<span class="tweet-error">
-						 		    <?php if(isset($error)){
-						 				echo $error;
-						 			}else if(isset($imageError)){
-						 				echo $imageError;
-						 			} ?></span>
-						 			</li>
-						 		</ul>
-						 	</div>
-						 	<div class="t-fo-right">
-						 		<span id="count">200</span>
-						 		<input type="submit" name="tweet" value="tweet"/>
-				 		</form>
-						 	</div>
-						 </div>
-					</div>
-				</div><!--TWEET WRAP END-->
+		
+				<!--NOTIFICATION WRAPPER FULL WRAPPER-->
+				<div class="notification-full-wrapper">
 
-			
-				<!--Tweet SHOW WRAPPER-->
-				 <div class="tweets">
- 				  	<!--TWEETS HERE-->
- 				  	<?php $getFromT->tweets($user_id,10);  ?>
- 				 </div>
- 				<!--TWEETS SHOW WRAPPER-->
+					<div class="notification-full-head">
+						<div>
+							<a href="#">All</a>
+						</div>
+						<div>
+							<a href="#">Mention</a>
+						</div>
+						<div>
+							<a href="#">settings</a>
+						</div>
+					</div>
+                
+				<!-- Follow Notification -->
+				<!--NOTIFICATION WRAPPER-->
+				<div class="notification-wrapper">
+					<div class="notification-inner">
+						<div class="notification-header">
+							
+							<div class="notification-img">
+								<span class="follow-logo">
+									<i class="fa fa-child" aria-hidden="true"></i>
+								</span>
+							</div>
+							<div class="notification-name">
+								<div>
+									 <img src="TWEET-IMAGE"/>
+								</div>
+							 
+							</div>
+							<div class="notification-tweet"> 
+							<a href="" class="notifi-name">SCREEN-NAME</a><span> Followed you your - <span>TIME</span>
+							
+							</div>
+						
+						</div>
+						
+					</div>
+					<!--NOTIFICATION-INNER END-->
+				</div>
+				<!--NOTIFICATION WRAPPER END-->
+				<!-- Follow Notification -->
+
+
+				<!-- Like Notification -->
+				<!--NOTIFICATION WRAPPER-->
+				<div class="notification-wrapper">
+					<div class="notification-inner">
+						<div class="notification-header">
+							<div class="notification-img">
+								<span class="heart-logo">
+									<i class="fa fa-heart" aria-hidden="true"></i>
+								</span>
+							</div>
+							<div class="notification-name">
+								<div>
+									 <img src="PROFILE-IMAGE"/>
+								</div>
+							</div>
+						</div>
+						<div class="notification-tweet"> 
+							<a href="" class="notifi-name">SCREEN-NAME</a><span> liked your TWEET - <span>TIME</span>
+						</div>
+						<div class="notification-footer">
+							<div class="noti-footer-inner">
+								<div class="noti-footer-inner-left">
+									<div class="t-h-c-name">
+										<span><a href="PROFILE-LINK">SCREEN-NAME</a></span>
+										<span>@USERNAME</span>
+										<span>TWEET-TIME</span>
+									</div>
+									<div class="noti-footer-inner-right-text">		
+										STATUS
+									</div>
+								</div>
+								<div class="noti-footer-inner-right">
+									<img src="TWEET-IMAGE"/>	
+								</div> 
+
+							</div><!--END NOTIFICATION-inner-->
+						</div>
+					</div>
+				</div>
+				<!--NOTIFICATION WRAPPER END--> 
+				<!-- Like Notification -->
+
+
+				<!-- Retweet Notification -->
+				<!--NOTIFICATION WRAPPER-->
+				<div class="notification-wrapper">
+					<div class="notification-inner">
+						<div class="notification-header">
+							
+							<div class="notification-img">
+								<span class="retweet-logo">
+									<i class="fa fa-retweet" aria-hidden="true"></i>
+								</span>
+							</div>
+						<div class="notification-tweet"> 
+							<a href="" class="notifi-name">SCREEN-NAME</a><span> retweet your TWEET - <span>TIME</span>
+						</div>
+						<div class="notification-footer">
+							<div class="noti-footer-inner">
+
+								<div class="noti-footer-inner-left">
+									<div class="t-h-c-name">
+										<span><a href="PROFILE-LINK">SCREEN-NAME</a></span>
+										<span>@USERNAME</span>
+										<span>TWEET-TIME</span>
+									</div>
+									<div class="noti-footer-inner-right-text">		
+										STATUS
+									</div>
+								</div>
+
+							 
+								<div class="noti-footer-inner-right">
+									<img src="TWEET-IMAGE"/>	
+								</div> 
+
+							</div><!--END NOTIFICATION-inner-->
+						</div>
+						</div>
+					</div>
+				</div>
+				<!--NOTIFICATION WRAPPER END-->
+				<!-- Retweet Notification -->
+
+				</div>
+				<!--NOTIFICATION WRAPPER FULL WRAPPER END-->
+
 
 		    	<div class="loading-div">
 		    		<img id="loader" src="<?php echo BASE_URL;  ?>assets/images/loading.svg" style="display: none;"/> 

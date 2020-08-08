@@ -252,7 +252,7 @@
 							</div>
 						</div>' :
 						'' ).'
-						'.((!empty($tweet->retweetMsg) && $tweet->tweetID ===$retweet['tweetID'] OR $tweet->retweetID > 0) ? '
+						'.((!empty($tweet->retweetMsg) && $tweet->tweetID ===!empty($retweet['tweetID']) OR $tweet->retweetID > 0) ? '
 							<div class="t-show-popup" data-tweet="'.$tweet->tweetID.'">
 							<div class="t-show-head">
 									<div class="t-show-img">
@@ -359,6 +359,7 @@
 		<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/hashtag.js"></script>
 		<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/follow.js"></script>
 		<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/messages.js"></script>
+		<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/notification.js"></script>
 </div>
 <!-- in center end -->
 
